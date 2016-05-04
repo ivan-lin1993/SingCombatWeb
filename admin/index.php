@@ -10,5 +10,28 @@
 <body>
 	<a class="btn btn-default" href="showSingers.php">顯示所有參加人</a>
 	<a class="btn btn-default" href="addSinger.html">增加參賽者</a>
+	
+	<div class="dropdown">
+		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">切換目前歌手<span class="caret"></span></button>
+		<ul class="dropdown-menu">
+			<li><a href='changeSinger.php?id=-1'>結束</a></li>
+			<?php
+				include dirname(__FILE__)."/../config.php";
+				mysql_query("SET NAMES 'UTF8'");
+				$sql = "SELECT * FROM singers;";
+				$result=mysql_query($sql) or die('MySQL query error 4');
+				while($row = mysql_fetch_array($result)){
+					$name=$row['name'];
+					$id=$row['id'];
+					echo "<li><a href='changeSinger.php?id=$id'>";
+					echo $name;
+					echo "</a></li>";
+				}
+			?>
+		</ul>
+	</div>
+  
+
+	
 </body>
 </html>

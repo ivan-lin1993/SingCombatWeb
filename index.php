@@ -1,3 +1,6 @@
+<?php 
+	include "function.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,18 +23,13 @@
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown">節目<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a>Page 1-2</a></li>
-					<li><a>Page 1-3</a></li>
-					<li><a>Page 1-1</a></li>
-					<li><a>Page 1-1</a></li>
-					<li><a>Page 1-2</a></li>
-					<li><a>Page 1-3</a></li>
-					<li><a>Page 1-1</a></li>
-					<li><a>Page 1-1</a></li>
+					<?php 
+						showSingerList();
+					?>
 				</ul>
 			</li>
 			<li style="float: right;">
-				<button  class="btn">評下一位</button>
+				<button class="btn" onclick="location.reload();">評下一位</button>
 			</li>
 		</ul>
 
@@ -46,9 +44,7 @@
 <img src="upload/0.png" width="50%"></img>
 <table>
 <div class="">
-<tr><td>Name</td></tr>
-<tr><td>introduce</td></tr>
-<tr><td>Song:</td></tr>
+<?php showNowSinger();?>
 </table>
 <br>
 <label for="rate_input" class="control-label">評分</label>

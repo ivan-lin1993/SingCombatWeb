@@ -11,7 +11,7 @@
 	echo "</tr>";
 	
 	
-	while($row=mysql_affected_rows($result)){
+	while($row=mysql_fetch_array($result)){
 		//echo $row['id'];
 		echo "<tr>";
 		echo "<td>".$row['id']."</td>";

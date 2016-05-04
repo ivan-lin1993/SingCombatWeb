@@ -28,5 +28,5 @@
 		echo "檔案上傳失敗，請再試一次!";
 	}
 	*/
-	header("Location: addSinger.html");
+	header("Location: index.php");
 ?>
