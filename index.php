@@ -1,5 +1,6 @@
-<?php 
+﻿<?php 
 	include "function.php";
+	getNowSinger();
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,14 +42,16 @@
 
 ?>
 <center>
-<img src="upload/0.png" width="50%"></img>
-<table>
-<div class="">
+<img src="<?php getSingerPic();?>" width="50%"></img>
+
 <?php showNowSinger();?>
-</table>
+
 <br>
-<label for="rate_input" class="control-label">評分</label>
-<input id="rate_input" value="0" type="number" class="rating" min=0 max=5 step=1 data-size="sm">
+<form action="addVote.php" method="post">
+	<label for="rate_input" class="control-label">評分</label>
+	<input name="rate_input" value="0" type="number" class="rating" min=0 max=5 step=1 data-size="sm">
+	<button class="btn btn-primary" type="submit">送出</button>
+</form>
 </center>
 
 </body>

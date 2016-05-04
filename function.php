@@ -1,5 +1,6 @@
 ﻿<?php
 	include "config.php";
+	
 	function addComment($commentFrom,$commentTo,$commentText){
 		mysql_query("SET NAMES 'UTF8'");
 		$sql = "INSERT INTO comments (commentFrom,commentTo, commentText) VALUES ('$commentFrom','$commentTo', '$commentText');";
@@ -35,8 +36,7 @@
 			echo "</a></li>";
 		}
 	}
-	function showNowSinger(){
-		
+	function getNowSinger(){
 		mysql_query("SET NAMES 'UTF8'");
 		$sql = "SELECT * FROM nowSinger;";
 		$result=mysql_query($sql) or die('MySQL query error 5');
@@ -48,20 +48,51 @@
 		$result=mysql_query($sql) or die('MySQL query error 6');
 		
 		while($row = mysql_fetch_array($result)){
-			echo "<tr><td>";
-			echo $row['name'];
-			echo "</td></tr>";
-			
-			echo "<tr><td>";
-			echo $row['department'];
-			echo "</td></tr>";
-			
-			echo "<tr><td>";
-			echo $row['song'];
-			echo "</td></tr>";
-			
+			$name=$row['name'];
+			$department=$row['department'];
+			$song=$row['song'];
 		}
+	}
+	function getSingerPic(){
+		mysql_query("SET NAMES 'UTF8'");
+		$sql = "SELECT * FROM nowSinger;";
+		$result=mysql_query($sql) or die('MySQL query error 5');
+		$row = mysql_fetch_array($result);
+		$id=$row['id'];
 		
+		mysql_query("SET NAMES 'UTF8'");
+		$sql = "SELECT * FROM singers WHERE id='$id';";
+		$result=mysql_query($sql) or die('MySQL query error 6');
+		
+		$row = mysql_fetch_array($result);
+		$name=$row['name'];
+		echo "upload/".$name.".jpg";
+
+	}
+	function showNowSinger(){
+		mysql_query("SET NAMES 'UTF8'");
+		$sql = "SELECT * FROM nowSinger;";
+		$result=mysql_query($sql) or die('MySQL query error 5');
+		$row = mysql_fetch_array($result);
+		$id=$row['id'];
+		
+		mysql_query("SET NAMES 'UTF8'");
+		$sql = "SELECT * FROM singers WHERE id='$id';";
+		$result=mysql_query($sql) or die('MySQL query error 6');
+		
+		while($row = mysql_fetch_array($result)){
+			echo "<h4>";
+			echo $row['name'];
+			echo "</h4>";
+			
+			echo "<h5>";
+			echo $row['department'];
+			echo "</h5>";
+			
+			echo "<h3>";
+			echo $row['song'];
+			echo "</h3>";
+		}
 	}
 	//******************************************************************
 	function showSingerVotes($id){
