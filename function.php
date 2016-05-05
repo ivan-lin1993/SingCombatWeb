@@ -52,6 +52,7 @@
 			$department=$row['department'];
 			$song=$row['song'];
 		}
+		setcookie("nowSinger", $id,time()+3600*4);
 	}
 	function getSingerPic(){
 		mysql_query("SET NAMES 'UTF8'");
@@ -93,6 +94,7 @@
 			echo $row['song'];
 			echo "</h3>";
 		}
+		
 	}
 	//******************************************************************
 	function showSingerVotes($id){

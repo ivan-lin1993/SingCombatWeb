@@ -12,11 +12,26 @@
 	<a class="btn btn-default" href="addSinger.html">增加參賽者</a>
 	
 	<div class="dropdown">
-		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">切換目前歌手<span class="caret"></span></button>
+		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+		<?php 
+			include dirname(__FILE__)."/../config.php";
+			mysql_query("SET NAMES 'UTF8'");
+			$sql = "SELECT * FROM nowSinger;";
+			$result=mysql_query($sql) or die('MySQL query error 5');
+			$row = mysql_fetch_array($result);
+			$id=$row['id'];
+			
+			mysql_query("SET NAMES 'UTF8'");
+			$sql = "SELECT * FROM singers WHERE id='$id';";
+			$result=mysql_query($sql) or die('MySQL query error 6');
+			$row=mysql_fetch_array($result);
+			echo $row['name'];
+		?>
+		 <span class="caret"></span></button>
 		<ul class="dropdown-menu">
 			<li><a href='changeSinger.php?id=-1'>結束</a></li>
 			<?php
-				include dirname(__FILE__)."/../config.php";
+				
 				mysql_query("SET NAMES 'UTF8'");
 				$sql = "SELECT * FROM singers;";
 				$result=mysql_query($sql) or die('MySQL query error 4');
