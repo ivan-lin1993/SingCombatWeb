@@ -1,5 +1,5 @@
 <?php
-	if($_POST['name']==NULL||$_POST['department']==NULL||$_POST['song']==NULL||$_POST['about']==NULL)
+	if($_POST['name']==NULL||$_POST['department']==NULL||$_POST['song']==NULL)
     {
         echo "<script>alert('錯誤');</script>";
 		exit;

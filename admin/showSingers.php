@@ -7,7 +7,7 @@
 	
 	echo "<table border='5'>";
 	echo "<tr>";
-	echo "<th>id</th><th>名字</th><th>系級</th><th>歌</th><th>分數</th>";
+	echo "<th>id</th><th>名字</th><th>系級</th><th>歌</th><th>分數</th><th>人氣投票</th>";
 	echo "</tr>";
 	
 	

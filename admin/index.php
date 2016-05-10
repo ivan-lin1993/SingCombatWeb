@@ -12,6 +12,7 @@
 	<a class="btn btn-default" href="addSinger.html">增加參賽者</a>
 	
 	<div class="dropdown">
+		<label>目前歌唱</label>
 		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
 		<?php 
 			include dirname(__FILE__)."/../config.php";

@@ -1,3 +1,8 @@
+function initial(){
+	isOver();
+	isVote();
+	isHotVote();
+}
 function isOver(){
 	var id=	getCookie("nowSinger");
 	
@@ -15,6 +20,14 @@ function isVote(){
 		voteForm.style.display="none";
 	}
 }
+function isHotVote(){
+	var id=	getCookie("nowSinger");
+	var voteForm=document.getElementById('hotVote');
+	if(getCookie("hasHotVote")==id){
+		voteForm.style.display="none";
+	}
+}
+
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
