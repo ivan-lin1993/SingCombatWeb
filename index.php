@@ -1,10 +1,18 @@
 ﻿<?php 
+	if($_COOKIE['_user']==null){
+		echo "<script>";
+		echo "var code = prompt('輸入CODE');";
+		
+		echo "window.location = 'login.php?code='+code;";
+		
+		
+		echo "</script>";
+		
+		//header("Location: login.php");
+		//exit;
+	}
 	include "function.php";
 	getNowSinger();
-	/*if($_COOKIE['_user']==null){
-		echo "請先登入";
-		exit;
-	}*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,19 +42,24 @@
 					?>
 				</ul>
 			</li>
-			<li style="float: right;">
-				<button class="navbar-btn" onclick="location.reload();">評目前歌手</button>
-			</li>
+			
 		</ul>
 
 	</div>
 </nav>
+
+				
+			
 <?php
 //include "function.php";
 //getSingers();
 
 ?>
 <center id="all_info" style="display:block;">
+<button class="btn btn-default navbar-btn" onclick="location.reload();">留言板</button>			
+<button class="btn btn-default navbar-btn" onclick="location.reload();">評目前歌手</button>
+<br>
+
 <img src="<?php getSingerPic();?>" width="50%"></img>
 
 <?php showNowSinger();?>
@@ -58,7 +71,8 @@
 	<button class="btn btn-primary" type="submit">送出分數</button>
 </form>
 <form id="hotVote" action="addHotVote.php">
-	<button class="btn btn-info" type="submit">人氣王投票</button>
+	<label>人氣王投票</label>
+	<button class="btn btn-info" type="submit">投我一票</button>
 </form>
 
 <form id="commentForm" action="addComment.php" method="post">

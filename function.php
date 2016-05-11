@@ -28,12 +28,24 @@
 	}
 	function showSingerList(){
 		mysql_query("SET NAMES 'UTF8'");
+		$sql = "SELECT * FROM nowSinger;";
+		$result=mysql_query($sql) or die('MySQL query error 5');
+		$row = mysql_fetch_array($result);
+		$id=$row['id'];
+		
+		mysql_query("SET NAMES 'UTF8'");
 		$sql = "SELECT * FROM singers;";
 		$result=mysql_query($sql) or die('MySQL query error 4');
 		while($row = mysql_fetch_array($result)){
-			echo "<li><a>";
-			echo $row['name'];
-			echo "</a></li>";
+			if($row['id']==$id){
+				echo "<li class='active'><a>";
+			}
+			else {
+				echo "<li><a>";
+			}
+				echo $row['name']." --- ".$row['song'];
+				echo "</a></li>";
+				
 		}
 	}
 	function getNowSinger(){

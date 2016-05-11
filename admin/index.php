@@ -10,7 +10,7 @@
 <body>
 	<a class="btn btn-default" href="showSingers.php">顯示所有參加人</a>
 	<a class="btn btn-default" href="addSinger.html">增加參賽者</a>
-	
+	<a class="btn btn-default" href="showUser.php">顯示使用者帳號狀況</a>
 	<div class="dropdown">
 		<label>目前歌唱</label>
 		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
@@ -46,7 +46,6 @@
 			?>
 		</ul>
 	</div>
-  
 
 	
 </body>

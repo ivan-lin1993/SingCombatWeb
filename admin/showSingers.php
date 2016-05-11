@@ -27,6 +27,14 @@
 		echo "<td>".$row['song']."</td>";
 		echo "<td>".$row2['total_score']."</td>";
 		
+		$sql2="SELECT COUNT(*) AS hotVote FROM hot_singer_vote WHERE voteTo='$id';";
+		$result2=mysql_query($sql2) or die('Shit');
+		$row2=mysql_fetch_assoc($result2);
+		
+		echo "<td>".$row2['hotVote']."</td>";
+		
+		
+		
 		echo "</tr>";
 	}
 	
