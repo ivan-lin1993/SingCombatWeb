@@ -7,7 +7,7 @@
 	
 	echo "<table border='5'>";
 	echo "<tr>";
-	echo "<th>id</th><th>名字</th><th>系級</th><th>歌</th><th>分數</th><th>人氣投票</th>";
+	echo "<th>id</th><th>名字</th><th>系級</th><th>歌</th><th>總分數</th><th>平均分數</th><th>人氣投票</th>";
 	echo "</tr>";
 	
 	
@@ -15,7 +15,7 @@
 		//echo $row['id'];
 		
 		$id=$row['id'];
-		$sql2="SELECT SUM(score) AS total_score FROM votes WHERE toWho='$id';";
+		$sql2="SELECT SUM(score) AS total_score, COUNT(toWho) AS total_m FROM votes WHERE toWho='$id';";
 		$result2=mysql_query($sql2) or die('Shit');
 		$row2=mysql_fetch_assoc($result2);
 		
@@ -26,6 +26,7 @@
 		echo "<td>".$row['department']."</td>";
 		echo "<td>".$row['song']."</td>";
 		echo "<td>".$row2['total_score']."</td>";
+		echo "<td>".$row2['total_score']/$row2['total_m']."</td>";
 		
 		$sql2="SELECT COUNT(*) AS hotVote FROM hot_singer_vote WHERE voteTo='$id';";
 		$result2=mysql_query($sql2) or die('Shit');

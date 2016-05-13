@@ -1,11 +1,16 @@
-﻿<!DOCTYPE html>
+﻿<?php
+	if($_COOKIE['admin']!="Yes"){
+		header("Location: login.php");
+	}
+?>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="../css/bootstrap.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </head>
 <body>
 	<a class="btn btn-default" href="showSingers.php">顯示所有參加人</a>
@@ -13,7 +18,7 @@
 	<a class="btn btn-default" href="showUser.php">顯示使用者帳號狀況</a>
 	<div class="dropdown">
 		<label>目前歌唱</label>
-		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
 		<?php 
 			include dirname(__FILE__)."/../config.php";
 			mysql_query("SET NAMES 'UTF8'");
@@ -46,7 +51,24 @@
 			?>
 		</ul>
 	</div>
-
+	<div>
+		<form id="commentForm" action="showComment.php" method="get">
+			<label>顯示留言</label>
+			<select name="commentTo">
+				<?php 
+					mysql_query("SET NAMES 'UTF8'");
+					$sql = "SELECT * FROM singers;";
+					$result=mysql_query($sql) or die('MySQL query error 4');
+					while($row = mysql_fetch_array($result)){
+						echo "<option value=".$row['id'].">";
+						echo $row['name'];
+						echo "</option>";
+					}
+				?>
+			</select>
+			<button class="btn" type="submit">查詢</button>
+		</form>
+	</div>
 	
 </body>
 </html>

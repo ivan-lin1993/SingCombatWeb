@@ -1,6 +1,6 @@
 ﻿<?php
 	include "config.php";
-	
+	$timec=5*3600;
 	function addComment($commentFrom,$commentTo,$commentText){
 		mysql_query("SET NAMES 'UTF8'");
 		$sql = "INSERT INTO comments (commentFrom,commentTo, commentText) VALUES ('$commentFrom','$commentTo', '$commentText');";
@@ -64,7 +64,7 @@
 			$department=$row['department'];
 			$song=$row['song'];
 		}
-		setcookie("nowSinger", $id,time()+3600*4);
+		setcookie("nowSinger", $id,time()+5*3600);
 	}
 	function getSingerPic(){
 		mysql_query("SET NAMES 'UTF8'");
@@ -80,7 +80,6 @@
 		$row = mysql_fetch_array($result);
 		$name=$row['name'];
 		echo "upload/".$name.".jpg";
-
 	}
 	function showNowSinger(){
 		mysql_query("SET NAMES 'UTF8'");
@@ -108,6 +107,23 @@
 		}
 		
 	}
+	function showCommentList(){
+		$id=$_COOKIE['nowSinger'];
+		mysql_query("SET NAMES 'UTF8'");
+		$sql = "SELECT * FROM singers;";
+		$result=mysql_query($sql) or die('list error');
+		while($row = mysql_fetch_array($result)){
+			if($row['id']==$_COOKIE['nowSinger']){
+				echo "<option value=".$row['id']." selected>";
+			}
+			else{
+				echo "<option value=".$row['id'].">";
+			}
+			echo $row['name'];
+			echo "</option>";
+		}
+		
+	}
 	//******************************************************************
 	function showSingerVotes($id){
 		mysql_query("SET NAMES 'UTF8'");
@@ -121,9 +137,9 @@
 		}
 	}
 	function User_setCookie($key,$value){
-		setcookie($key, $value,time()+3600*4);
+		setcookie($key, $value,time()+5*3600);
 	}
 	function isCookie($key,$value){
-		setcookie($key, $value,time()+3600*4);
+		setcookie($key, $value,time()+5*3600);
 	}
 ?>
