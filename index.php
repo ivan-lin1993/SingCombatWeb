@@ -47,13 +47,7 @@
 	</div>
 </nav>
 
-				
-			
-<?php
-//include "function.php";
-//getSingers();
 
-?>
 <div id="all_info" style="display:block;" align="center">
 <button class="btn btn-default navbar-btn" onclick="location.reload();">留言板</button>			
 <button class="btn btn-default navbar-btn" onclick="location.reload();">評目前歌手</button>

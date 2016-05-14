@@ -6,6 +6,10 @@
 	$result=mysql_query($sql) or die("DB ERROR");
 	if(mysql_num_rows($result)==0){
 		echo "無效帳號";
+		
+		print "
+		<button onclick=\"location.href='index.php';\">按我返回</button>
+		";
 		exit;
 	}
 	$row=mysql_fetch_array($result);
