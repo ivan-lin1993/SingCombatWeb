@@ -11,10 +11,9 @@
 	$name=$_POST['name'];
 	$department=$_POST['department'];
 	$song=$_POST['song'];
-	$about=$_POST['about'];
 	
 	mysql_query("SET NAMES 'UTF8'");
-	$sql = "INSERT INTO singers (name, department , song,about) VALUES ('$name', '$department', '$song','$about');";
+	$sql = "INSERT INTO singers (name, department , song) VALUES ('$name', '$department', '$song');";
 	mysql_query($sql) or die('MySQL query error');
 	
 	$target_path = "upload/"; //指定上傳資料夾

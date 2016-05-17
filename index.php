@@ -48,8 +48,7 @@
 </nav>
 
 
-<div id="all_info" style="display:block;" align="center">
-<button class="btn btn-default navbar-btn" onclick="location.reload();">留言板</button>			
+<div id="all_info" style="display:block;" align="center">	
 <button class="btn btn-default navbar-btn" onclick="location.reload();">評目前歌手</button>
 <br>
 
